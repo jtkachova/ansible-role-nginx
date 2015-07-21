@@ -17,6 +17,11 @@ server {
   access_log {{ nginx_log_dir}}/{{item.server_name}}/access.log {{item.log_fmt|default('')}};
   error_log  {{nginx_log_dir}}/{{item.server_name}}/error.log;
 
+{% if item.http_directives is defined %}
+{%   for d in item.http_directives %}
+  {{d}}
+{%   endfor %}
+{% endif %}
 }
 
 {% if item.ssl_enabled is defined and item.ssl_enabled %}
@@ -32,6 +37,12 @@ server {
   
   access_log {{nginx_log_dir}}/{{item.server_name}}/ssl-access.log {{item.log_fmt|default('')}};
   error_log  {{nginx_log_dir}}/{{item.server_name}}/ssl-error.log;
+
+{% if item.https_directives is defined %}
+{%   for d in item.https_directives %}
+  {{d}}
+{%   endfor %}
+{% endif %}
 
 }
 {% endif %}

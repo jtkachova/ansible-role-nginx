@@ -95,6 +95,10 @@
               8g5WFN/5+YJzDt5bypUycUH1Evyv93m1J9FePuP2kqVRx3XhvI4lXUZKaUI34qql
               x1AtpNEaHJFj
               -----END CERTIFICATE-----
+          http_directives:
+            - |
+              return 301 https://www.sslfoo.com;
+
 
     - nginx_config:
         log_format: |

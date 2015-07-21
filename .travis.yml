@@ -21,5 +21,8 @@ script:
   - ansible-playbook tests/test_vhost_ssl.yml -i localhost, --syntax-check 
   - ansible-playbook tests/test_vhost_ssl.yml -i localhost, --connection=local --sudo
 
+  # Vhost http_directives
+  - ansible-playbook tests/test_http_directives.yml -i localhost, --syntax-check 
+  - ansible-playbook tests/test_http_directives.yml -i localhost, --connection=local --sudo
 
 # vi:ts=2:sw=2:et:ft=yaml
