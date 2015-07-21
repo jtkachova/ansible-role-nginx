@@ -7,8 +7,8 @@
 nginx_packages: 
   Debian:
     - nginx
+    - nginx-full
     - nginx-common
-    - nginx-extras
     - openssl
 
   RedHat:
