@@ -1,0 +1,84 @@
+---
+#
+# Defaults for nginx role
+#
+
+# Packages depending on the OS family
+nginx_packages: 
+  Debian:
+    - nginx
+    - nginx-common
+    - nginx-extras
+    - openssl
+
+  RedHat:
+    - nginx
+
+# Run some tasks with no_log enabled to avoid information disclosure
+# (ssl certs, etc)
+nginx_no_log: true
+
+# Nginx User
+nginx_user:  www-data
+nginx_group: www-data
+
+# Configuration prefix
+nginx_prefix: /etc/nginx
+
+nginx_sites_available: "{{nginx_prefix}}/sites-available"
+nginx_sites_enabled:   "{{nginx_prefix}}/sites-enabled"
+
+nginx_config_dir: "{{nginx_prefix}}/conf.d"
+nginx_ssl_dir:    "{{nginx_prefix}}/ssl"
+nginx_log_dir:    "/var/log/nginx"
+
+
+# Nginx server configs
+# nginx_config:
+#   log_formats: |
+#     log_format main '$remote_addr - $remote_user [$time_local] '
+#       '"$request" $status $body_bytes_sent '
+#       '"$http_referer" "$http_user_agent" '
+#       '"$http_x_forwarded_for" $request_time';
+
+nginx_config: {}
+  
+
+# Nginx Vhosts example
+#
+#nginx_vhosts:
+#  # Each item on the list, represents a virtualhost configuration
+#  - server_name: foo.bar
+#    root: /var/www/foo.bar/html
+#    # If you have defined a log format on the nginx_config settings
+#    # you can reference it in a virtualhost defining log_fmt
+#    log_fmt: format_name
+#    ssl_enabled: true
+#    certs:
+#      # Certificates can be specified in a couple of different ways
+#      # Inline: (bad for your security)
+#      key: |
+#        ----- BEGIN -----
+#        ...
+#        ----- END   -----
+#      # From a vault var: (good for your security)
+#      crt:   {{vault_http_cert}}
+#      ca:    {{vault_http_ca}}
+#      # The chain is optional
+#      chain: {{vault_http_chain}}
+#
+# There are two special vars that allow you to specify a list of
+# nginx directives. There is one for http and another for https.
+# A useful scenario for having two different vars is when you want
+# to redirect everything to HTTPS:
+#
+#    http_directives
+#      - |
+#          
+#     
+#    https_directives
+#      - |
+#
+nginx_vhosts: []
+
+# vi:ts=2:sw=2:et:ft=yaml

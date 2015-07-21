@@ -1,0 +1,39 @@
+# << Ansible generated file >>
+
+server {
+
+  listen {{item.listen|default('80')}};
+  server_name {{item.server_name}}
+{% if item.server_aliases is defined %}
+{%   for a in item.server_aliases %}
+    {{a}}
+{%-   endfor %}
+{%- endif %};
+
+{% if item.root %}
+  root {{item.root}};
+{% endif %}
+
+  access_log {{ nginx_log_dir}}/{{item.server_name}}/access.log {{item.log_fmt|default('')}};
+  error_log  {{nginx_log_dir}}/{{item.server_name}}/error.log;
+
+}
+
+{% if item.ssl_enabled is defined and item.ssl_enabled %}
+server {
+
+  listen {{item.listen_ssl|default('443')}};
+  server_name {{item.server_name}};
+
+  ssl on;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_certificate         {{nginx_ssl_dir}}/{{item.server_name}}.pem;
+  ssl_certificate_key     {{nginx_ssl_dir}}/{{item.server_name}}.key;
+  
+  access_log {{nginx_log_dir}}/{{item.server_name}}/ssl-access.log {{item.log_fmt|default('')}};
+  error_log  {{nginx_log_dir}}/{{item.server_name}}/ssl-error.log;
+
+}
+{% endif %}
+
+# vi:ts=2:sw=2:et:
