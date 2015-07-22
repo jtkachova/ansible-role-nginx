@@ -3,7 +3,7 @@
   sudo: yes
 
   vars:
-    - nginx_no_log: false
+    - nginx_no_log: True
     - nginx_vhosts:
         - server_name: sslfoo.com
           server_aliases:
