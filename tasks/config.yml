@@ -37,4 +37,12 @@
   with_dict: nginx_config
   no_log: nginx_no_log
 
+- name: Nginx OS family config
+  include: config_Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Nginx OS family config
+  include: config_RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
 # vi:ts=2:sw=2:et:ft=yaml
