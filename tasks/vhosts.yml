@@ -25,7 +25,7 @@
 - name: Virtualhosts Config
   template: 
     src=etc/nginx/sites-available/vhost.j2
-    dest="{{nginx_sites_available}}/{{item.server_name}}"
+    dest="{{nginx_sites_available}}/{{item.server_name}}.conf"
     owner="root"
     group="root"
     mode="644"
@@ -35,8 +35,8 @@
 
 - name: Enable Virtualhost
   file:
-    src="{{nginx_sites_available}}/{{item.server_name}}"
-    dest="{{nginx_sites_enabled}}/{{item.server_name}}"
+    src="{{nginx_sites_available}}/{{item.server_name}}.conf"
+    dest="{{nginx_sites_enabled}}/{{item.server_name}}.conf"
     state=link
   with_items: nginx_vhosts
   notify: nginx restart 
