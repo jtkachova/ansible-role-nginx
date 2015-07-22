@@ -1,0 +1,12 @@
+---
+
+nginx_user:  www-data
+nginx_group: www-data
+
+nginx_packages: 
+  - nginx
+  - nginx-full
+  - nginx-common
+  - openssl
+
+# vi:ts=2:sw=2:et:ft=yaml

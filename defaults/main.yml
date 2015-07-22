@@ -3,24 +3,11 @@
 # Defaults for nginx role
 #
 
-# Packages depending on the OS family
-nginx_packages: 
-  Debian:
-    - nginx
-    - nginx-full
-    - nginx-common
-    - openssl
-
-  RedHat:
-    - nginx
+# OS family dependent vars are locate in vars/{{ansible_os_family}}.yml
 
 # Run some tasks with no_log enabled to avoid information disclosure
 # (ssl certs, etc)
 nginx_no_log: true
-
-# Nginx User
-nginx_user:  www-data
-nginx_group: www-data
 
 # Configuration prefix
 nginx_prefix: /etc/nginx

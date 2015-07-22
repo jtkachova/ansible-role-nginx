@@ -1,5 +1,8 @@
 ---
 
+- name: Include OS Family vars
+  include_vars: "{{ansible_os_family}}.yml"
+
 - include: install/Debian.yml
   tags: nginx_install
   when: ansible_os_family == 'Debian'
