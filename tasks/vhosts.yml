@@ -8,7 +8,7 @@
     group={{nginx_group}}
     mode="0755"
   with_items: nginx_vhosts
-  no_log: nginx_no_log
+  no_log: true
 
 - name: Virtualhost root
   file: 
@@ -20,7 +20,7 @@
   when: item.create_root is defined and item.create_root and item.root is defined and item.root
   with_items: nginx_vhosts
   notify: nginx restart
-  no_log: nginx_no_log
+  no_log: true
 
 - name: Virtualhosts Config
   template: 
@@ -31,7 +31,7 @@
     mode="644"
   with_items: nginx_vhosts
   notify: nginx restart
-  no_log: nginx_no_log
+  no_log: true
 
 - name: Enable Virtualhost
   file:
@@ -40,6 +40,6 @@
     state=link
   with_items: nginx_vhosts
   notify: nginx restart 
-  no_log: nginx_no_log
+  no_log: true
 
 # vi:ts=2:sw=2:et:ft=yaml
