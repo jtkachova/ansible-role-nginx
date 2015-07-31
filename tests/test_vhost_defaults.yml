@@ -1,0 +1,18 @@
+---
+- hosts: all
+  sudo: yes
+
+  vars:
+    - nginx_no_log: false
+    - nginx_vhosts:
+        - server_name: foo.com
+          server_aliases:
+            - www.foo.bar
+            - baz.foo.bar
+        
+  roles:
+    - {
+        role: ansible-role-nginx
+      }
+
+# vi:ts=2:sw=2:et:ft=yaml

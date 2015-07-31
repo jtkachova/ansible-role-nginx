@@ -10,7 +10,7 @@ server {
 {%-   endfor %}
 {%- endif %};
 
-{% if item.root %}
+{% if item.root is defined %}
   root {{item.root}};
 {% endif %}
 
