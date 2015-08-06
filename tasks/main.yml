@@ -21,4 +21,11 @@
 - include: vhosts.yml
   tags: nginx_vhosts
 
+- name: Start and Enable nginx
+  service:
+    name=nginx
+    state=started
+    enabled=yes
+  when: nginx_enabled
+
 # vi:ts=2:sw=2:et:ft=yaml

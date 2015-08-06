@@ -9,6 +9,9 @@
 # (ssl certs, etc)
 nginx_no_log: true
 
+# Start Nginx, and enable the service
+nginx_enabled: true
+
 # Configuration prefix
 nginx_prefix: /etc/nginx
 
