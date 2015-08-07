@@ -6,6 +6,7 @@
     - nginx_no_log: false
     - nginx_vhosts:
         - server_name: foo.com
+          logrotate_enabled: true
           server_aliases:
             - www.foo.bar
             - baz.foo.bar

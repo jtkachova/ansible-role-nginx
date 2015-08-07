@@ -43,6 +43,14 @@ nginx_config: {}
 #    # If you have defined a log format on the nginx_config settings
 #    # you can reference it in a virtualhost defining log_fmt
 #    log_fmt: format_name
+#    # Enable logrotate for this vhost
+#    logrotate_enabled: true
+#    # If you want to specify your own directives, you can
+#    # If you want to know the defaults, take a pic to the template
+#    logrotate_directives: |
+#      create 0644 user group
+#      weekly
+#      compress
 #    ssl_enabled: true
 #    certs:
 #      # Certificates can be specified in a couple of different ways
