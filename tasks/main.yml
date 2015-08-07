@@ -4,13 +4,8 @@
   include_vars: "{{ansible_os_family}}.yml"
   tags: always
 
-- include: install/Debian.yml
+- include: install.yml
   tags: nginx_install
-  when: ansible_os_family == 'Debian'
-
-- include: install/RedHat.yml
-  tags: nginx_install
-  when: ansible_os_family == 'RedHat'
 
 - include: config.yml
   tags: nginx_config
