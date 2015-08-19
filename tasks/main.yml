@@ -16,6 +16,9 @@
 - include: vhosts.yml
   tags: nginx_vhosts
 
+- include: logrotate.yml
+  tags: nginx_logrotate
+
 - name: Start and Enable nginx
   service:
     name=nginx
