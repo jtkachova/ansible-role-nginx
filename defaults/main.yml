@@ -79,4 +79,7 @@ nginx_config: {}
 #
 nginx_vhosts: []
 
+#
+nginx_disable_vhosts: []
+
 # vi:ts=2:sw=2:et:ft=yaml
