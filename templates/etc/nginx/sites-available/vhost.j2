@@ -35,6 +35,10 @@ server {
   ssl_certificate         {{nginx_ssl_dir}}/{{item.server_name}}.pem;
   ssl_certificate_key     {{nginx_ssl_dir}}/{{item.server_name}}.key;
   
+{% if item.root is defined %}
+  root {{item.root}};
+{% endif %}
+
   access_log {{nginx_log_dir}}/{{item.server_name}}/ssl-access.log {{item.log_fmt|default('')}};
   error_log  {{nginx_log_dir}}/{{item.server_name}}/ssl-error.log;
 
