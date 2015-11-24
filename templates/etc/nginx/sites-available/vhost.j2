@@ -25,10 +25,12 @@ server {
 }
 
 {% if item.ssl_enabled is defined and item.ssl_enabled %}
+{% for server_name in item.server_list %}
+  
 server {
 
   listen {{item.listen_ssl|default('443')}};
-  server_name {{item.server_name}};
+  server_name {{server_name}};
 
   ssl on;
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -46,6 +48,7 @@ server {
 {%   for d in item.https_directives %}
   {{d}}
 {%   endfor %}
+{% endfor %}
 {% endif %}
 
 }
